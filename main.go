@@ -8,7 +8,7 @@ import (
 func main()  {
 	aoc := NewAOC()
 
-	result, err := aoc.Run(util.NewContext(), 1, 1)
+	result, err := aoc.Run(util.NewContext(), 1, 2)
 	if err != nil {
 		fmt.Printf("%v", err)
 		return
