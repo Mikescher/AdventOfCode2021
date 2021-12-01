@@ -1,6 +1,7 @@
 package main
 
 import (
+	"AdventOfCode2021/advent"
 	"AdventOfCode2021/input"
 	"AdventOfCode2021/util"
 )
@@ -16,7 +17,7 @@ func NewAOC() *AdventOfCode {
 		Code: make(map[int]AOCFunc, 24),
 	}
 
-	aoc.Add(1, nil, nil)
+	aoc.Add(1, advent.Day1Part1, nil)
 	aoc.Add(2, nil, nil)
 	aoc.Add(3, nil, nil)
 	aoc.Add(4, nil, nil)
