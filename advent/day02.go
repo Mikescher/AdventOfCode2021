@@ -8,7 +8,6 @@ import (
 )
 
 func Day2Part1(ctx *util.AOCContext) (string, error) {
-
 	pos := 0
 	depth := 0
 
@@ -35,5 +34,29 @@ func Day2Part1(ctx *util.AOCContext) (string, error) {
 }
 
 func Day2Part2(ctx *util.AOCContext) (string, error) {
-	return "", errors.New("unimplemented")
+	pos := 0
+	depth := 0
+	aim := 0
+
+	for _, line := range ctx.InputLines() {
+		split := strings.Split(line, " ")
+		cmd := split[0]
+		val, err := strconv.ParseInt(split[1], 10, 32)
+		if err != nil {
+			return "", err
+		}
+		switch cmd {
+		case "forward":
+			pos += int(val)
+			depth += int(val)*aim
+		case "up":
+			aim -= int(val)
+		case "down":
+			aim += int(val)
+		default:
+			return "", errors.New(cmd)
+		}
+	}
+
+	return strconv.Itoa(pos*depth), nil
 }
