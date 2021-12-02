@@ -18,7 +18,7 @@ func NewAOC() *AdventOfCode {
 	}
 
 	aoc.Add(1, advent.Day1Part1, advent.Day1Part2)
-	aoc.Add(2, nil, nil)
+	aoc.Add(2, advent.Day2Part1, advent.Day2Part2)
 	aoc.Add(3, nil, nil)
 	aoc.Add(4, nil, nil)
 	aoc.Add(5, nil, nil)
