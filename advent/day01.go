@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func Day1Part1(ctx *util.AOCContext) (string, error) {
+func Day01Part1(ctx *util.AOCContext) (string, error) {
 
 	incCount := 0
 
@@ -26,7 +26,7 @@ func Day1Part1(ctx *util.AOCContext) (string, error) {
 	return strconv.Itoa(incCount), nil
 }
 
-func Day1Part2(ctx *util.AOCContext) (string, error) {
+func Day01Part2(ctx *util.AOCContext) (string, error) {
 
 	incCount := 0
 

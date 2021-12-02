@@ -5,10 +5,10 @@ import (
 	"errors"
 )
 
-func Day03Part1(ctx *util.AOCContext) (string, error) {
+func Day22Part1(ctx *util.AOCContext) (string, error) {
 	return "", errors.New("unimplemented")
 }
 
-func Day03Part2(ctx *util.AOCContext) (string, error) {
+func Day22Part2(ctx *util.AOCContext) (string, error) {
 	return "", errors.New("unimplemented")
 }

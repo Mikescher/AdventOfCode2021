@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func Day2Part1(ctx *util.AOCContext) (string, error) {
+func Day02Part1(ctx *util.AOCContext) (string, error) {
 	pos := 0
 	depth := 0
 
@@ -33,7 +33,7 @@ func Day2Part1(ctx *util.AOCContext) (string, error) {
 	return strconv.Itoa(pos*depth), nil
 }
 
-func Day2Part2(ctx *util.AOCContext) (string, error) {
+func Day02Part2(ctx *util.AOCContext) (string, error) {
 	pos := 0
 	depth := 0
 	aim := 0
