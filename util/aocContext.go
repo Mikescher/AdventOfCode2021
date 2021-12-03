@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -8,6 +9,8 @@ type AOCContext struct {
 	Day   int
 	Part  int
 	Input string
+
+	Silent bool
 }
 
 func NewContext() *AOCContext {
@@ -15,6 +18,8 @@ func NewContext() *AOCContext {
 		Day:   -1,
 		Part:  -1,
 		Input: "",
+
+		Silent: false,
 	}
 }
 
@@ -26,4 +31,10 @@ func (c *AOCContext) InputLines() []string {
 		}
 	}
 	return r
+}
+
+func (c *AOCContext) Printf(format string, a ...interface{}) {
+	if ! c.Silent {
+		fmt.Printf(format, a...)
+	}
 }
