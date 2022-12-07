@@ -51,20 +51,34 @@ func (aoc *AdventOfCode) Add(day int, p1, p2 AOCFunc) {
 	aoc.Code[day*1000+2] = p2
 }
 
-func (aoc *AdventOfCode) Get(day, part int) AOCFunc {
-	return aoc.Code[day*1000+part]
+func (aoc *AdventOfCode) Get(day, part int) (AOCFunc, bool) {
+	if v, ok := aoc.Code[day*1000+part]; ok {
+		return v, true
+	} else {
+		return v, false
+	}
 }
 
-func (aoc *AdventOfCode) Run(ctx *util.AOCContext, day, part int) (string, error) {
+func (aoc *AdventOfCode) Run(ctx *util.AOCContext, day, part int) (string, bool, error) {
 
 	in, err := input.GetInput(day)
 	if err != nil {
-		return "", err
+		return "", false, err
 	}
 
 	ctx.Day = day
 	ctx.Part = part
 	ctx.Input = in
 
-	return aoc.Get(day, part)(ctx)
+	fn, found := aoc.Get(day, part)
+	if !found {
+		return "", false, nil
+	}
+
+	res, err := fn(ctx)
+	if err != nil {
+		return "", true, err
+	}
+
+	return res, true, nil
 }
