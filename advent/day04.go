@@ -128,7 +128,45 @@ func Day04Part1(ctx *util.AOCContext) (string, error) {
 }
 
 func Day04Part2(ctx *util.AOCContext) (string, error) {
-	return "", errors.New("unimplemented")
+	numbers, boards, err := loadBingoBoards(ctx)
+	if err != nil {
+		return "", err
+	}
+
+	ctx.Printf("\n")
+	ctx.Printf("====== INITIAL ======\n")
+	ctx.Printf("\n")
+	for _, b := range boards {
+		ctx.Printf("%s\n", b.String(make(map[int]int, 0)))
+	}
+
+	numMap := make(map[int]int, len(numbers))
+
+	for i, n := range numbers {
+		numMap[n] = n
+
+		ctx.Printf("\n")
+		ctx.Printf("====== %v ======\n", numbers[0:(i+1)])
+		ctx.Printf("\n")
+		for _, b := range boards {
+			ctx.Printf("%s\n", b.String(numMap))
+		}
+
+		remainingBoards := make([]BingoBoard, 0, len(boards))
+
+		for _, board := range boards {
+			if board.Solved(numMap) {
+				if len(boards) == 1 {
+					return strconv.Itoa(board.WinScore(numMap, n)), nil
+				}
+			} else {
+				remainingBoards = append(remainingBoards, board)
+			}
+		}
+		boards = remainingBoards
+	}
+
+	return "", errors.New("no board won")
 }
 
 func loadBingoBoards(ctx *util.AOCContext) ([]int, []BingoBoard, error) {
