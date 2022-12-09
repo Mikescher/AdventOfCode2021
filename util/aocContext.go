@@ -26,15 +26,16 @@ func NewContext() *AOCContext {
 func (c *AOCContext) InputLines() []string {
 	r := make([]string, 0)
 	for _, v := range strings.Split(c.Input, "\n") {
-		if v != "" {
-			r = append(r, v)
-		}
+		r = append(r, v)
+	}
+	for r[len(r)-1] == "" {
+		r = r[0 : len(r)-1]
 	}
 	return r
 }
 
 func (c *AOCContext) Printf(format string, a ...interface{}) {
-	if ! c.Silent {
+	if !c.Silent {
 		fmt.Printf(format, a...)
 	}
 }
